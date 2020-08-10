@@ -21,4 +21,8 @@ public class MarksService {
         return marksRepository.findMarksByStudentID(studentID);
     }
 
+    public List<Marks> findAllMarksDetails(){
+        return marksRepository.findAll();
+    }
+
 }

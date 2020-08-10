@@ -24,4 +24,9 @@ public class MarksController {
         return marksService.findMarksByStudentID(studentID);
     }
 
+    @RequestMapping(value = "/marks", method = RequestMethod.GET)
+    public List<Marks> getAllMarksList(){
+        return marksService.findAllMarksDetails();
+    }
+
 }

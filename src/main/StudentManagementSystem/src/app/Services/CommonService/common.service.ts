@@ -22,11 +22,17 @@ export class CommonService {
   public authenticateStudentByStudentID(studentID):Observable<any>{
     return this._http.get<any>(this._apiUrl_+"/students/" + studentID);
   }
+
   public authenticateTeacherByID(teacherID):Observable<any>{
     return this._http.get<any>(this._apiUrl_+"/teacher/"+teacherID);
   }
+
   public authenticateAdminByAdminID(adminID):Observable<any>{
     return this._http.get<any>(this._apiUrl_+"/admin/" + adminID);
+  }
+
+  public getStudentMarks(studentID):Observable<any>{
+    return this._http.get<any>(this._apiUrl_+"/marks/"+studentID);
   }
   //FindById Methods
 
@@ -38,6 +44,9 @@ export class CommonService {
   }
   public getAllAnnouncements():Observable<any>{
     return this._http.get(this._apiUrl_+"/announcement");
+  }
+  public getAllStudentMarks():Observable<any>{
+    return this._http.get(this._apiUrl_+"/marks");
   }
   //FindAll Methods
 

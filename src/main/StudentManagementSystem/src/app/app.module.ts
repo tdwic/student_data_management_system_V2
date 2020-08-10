@@ -40,6 +40,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ManageAnnouncementDetailsComponent } from './Component/manage-announcement-details/manage-announcement-details.component';
 import { UpdateAnnouncementDetailsComponent } from './Component/update-announcement-details/update-announcement-details.component';
+import { ManageExamMarksDetailsComponent } from './Component/manage-exam-marks-details/manage-exam-marks-details.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { UpdateAnnouncementDetailsComponent } from './Component/update-announcem
     TeacherPageComponent,
     UpdateStudentComponent,
     ManageAnnouncementDetailsComponent,
-    UpdateAnnouncementDetailsComponent
+    UpdateAnnouncementDetailsComponent,
+    ManageExamMarksDetailsComponent
   ],
   entryComponents:[RemoveConfirmationComponent,UpdateStudentComponent,NewAnnouncementComponent, UpdateAnnouncementDetailsComponent, SignupPageComponent],
   imports: [

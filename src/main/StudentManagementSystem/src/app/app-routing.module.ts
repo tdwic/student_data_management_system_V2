@@ -16,6 +16,7 @@ import {InsertExamMarksComponent} from "./Component/insert-exam-marks/insert-exa
 import {AuthGuard} from "./AuthGuard/auth.guard";
 import {ManageAnnouncementDetailsComponent} from "./Component/manage-announcement-details/manage-announcement-details.component";
 import {NewAnnouncementComponent} from "./Component/new-announcement/new-announcement.component";
+import {ManageExamMarksDetailsComponent} from "./Component/manage-exam-marks-details/manage-exam-marks-details.component";
 
 
 const routes: Routes = [
@@ -87,7 +88,7 @@ const routes: Routes = [
   },
   {
     path:'insertMarks',
-    component:InsertExamMarksComponent,
+    component:ManageExamMarksDetailsComponent,
     canActivate:[AuthGuard]
   }
 ];
