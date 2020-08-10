@@ -1,1 +1,148 @@
-<p>signup-page works!</p>
+<div fxLayoutAlign="center center" fxFlexFill>
+  <mat-card fxFlex="100">
+
+    <form [formGroup]="signUpForm" (ngSubmit)="signUpUser()">
+
+      <div class="row">
+
+        <div class="col">
+          <div class="md-form mt-0 mb-2">
+            <div class="controllersContainer">
+              <mat-form-field>
+                <input matInput formControlName="firstName" placeholder="First Name*">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="md-form mt-0 mb-2">
+            <div class="controllersContainer">
+              <mat-form-field>
+                <input matInput formControlName="lastName" placeholder="Last Name*">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col">
+          <div class="md-form mt-0 mb-2">
+            <div class="controllersContainer">
+              <mat-form-field>
+                <input matInput formControlName="studentID" placeholder="StudentID*">
+                <mat-error>need this</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="md-form mt-0 mb-2">
+            <div class="controllersContainer">
+              <mat-form-field>
+                <input matInput formControlName="studentPhone" placeholder="Phone Number*">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col">
+          <div class="md-form mt-0 mb-2">
+            <div class="controllersContainer">
+              <mat-form-field>
+                <input matInput type="password" formControlName="studentPassword" placeholder="Password*">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="md-form mt-0 mb-2">
+            <div class="controllersContainer">
+              <mat-form-field>
+                <input matInput type="password" formControlName="studentPasswordConfirm" placeholder="Confirm Password*"
+                       required>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col">
+          <div class="md-form mt-0 mb-2">
+            <div class="controllersContainer">
+              <mat-form-field>
+                <mat-label>Address</mat-label>
+                <textarea matInput formControlName="studentAddress"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="md-form mt-0 mb-2">
+            <div class="controllersContainer">
+              <mat-form-field color="accent" appearance="standard">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput formControlName="studentD0B" [matDatepicker]="picker2">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2 color="primary"></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col">
+          <div class="md-form mt-0 mb-2">
+            <div class="controllersContainer">
+              <mat-form-field appearance="legacy">
+                <mat-label>Gender</mat-label>
+                <select formControlName="studentGender" matNativeControl>
+                  <option selected>Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="md-form mt-0 mb-2">
+            <div class="controllersContainer">
+              <mat-form-field>
+                <input matInput formControlName="studentParent" placeholder="Parent Name*">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col"></div>
+        <div class="col">
+          <button mat-raised-button mat-dialog-close="" color="primary" type="submit">Sign Up</button>&nbsp;
+          <button mat-raised-button mat-dialog-close="" color="warn" type="reset">Cancel</button>
+        </div>
+      </div>
+
+    </form>
+
+  </mat-card>
+</div>

@@ -20,6 +20,27 @@ import { ResultPageComponent } from './Component/result-page/result-page.compone
 import { SignupPageComponent } from './Component/signup-page/signup-page.component';
 import { TeacherPageComponent } from './Component/teacher-page/teacher-page.component';
 import { UpdateStudentComponent } from './Component/update-student/update-student.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatCardModule} from "@angular/material/card";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {AuthService} from "./Services/AuthService/auth.service";
+import {HttpClientModule} from "@angular/common/http";
+import {AuthGuard} from "./AuthGuard/auth.guard";
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from "@angular/material/table";
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ManageAnnouncementDetailsComponent } from './Component/manage-announcement-details/manage-announcement-details.component';
+import { UpdateAnnouncementDetailsComponent } from './Component/update-announcement-details/update-announcement-details.component';
+
 
 @NgModule({
   declarations: [
@@ -40,13 +61,32 @@ import { UpdateStudentComponent } from './Component/update-student/update-studen
     ResultPageComponent,
     SignupPageComponent,
     TeacherPageComponent,
-    UpdateStudentComponent
+    UpdateStudentComponent,
+    ManageAnnouncementDetailsComponent,
+    UpdateAnnouncementDetailsComponent
   ],
+  entryComponents:[RemoveConfirmationComponent,UpdateStudentComponent,NewAnnouncementComponent, UpdateAnnouncementDetailsComponent, SignupPageComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    FlexLayoutModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    MatGridListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatTableModule,
+    MatTooltipModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [AuthService, HttpClientModule, AuthGuard, MatSnackBar],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

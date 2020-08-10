@@ -15,6 +15,8 @@ public class Student {
     private String studentTokenID;
     private String studentID;
     private String studentName;
+    private String studentFirstName;
+    private String studentLastName;
     private String studentAddress;
     private String studentPassword;
     private String studentD0B;
@@ -92,5 +94,21 @@ public class Student {
 
     public void setStudentTokenID(String studentTokenID) {
         this.studentTokenID = studentTokenID;
+    }
+
+    public String getStudentFirstName() {
+        return studentFirstName;
+    }
+
+    public void setStudentFirstName(String studentFirstName) {
+        this.studentFirstName = studentFirstName;
+    }
+
+    public String getStudentLastName() {
+        return studentLastName;
+    }
+
+    public void setStudentLastName(String studentLastName) {
+        this.studentLastName = studentLastName;
     }
 }

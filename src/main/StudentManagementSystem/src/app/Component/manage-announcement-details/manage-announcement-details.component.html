@@ -1,0 +1,57 @@
+
+<button class="newStudentButton" (click)="newAnnouncement();" mat-raised-button matTooltip="New Announcement"  color="primary"><i class="fas fa-comments"></i></button>
+
+
+<div fxLayoutAlign="center center" fxFlexFill>
+  <mat-card fxFlex="100">
+    <div class="table-data-container">
+      <table mat-table [dataSource]="dataSource">
+
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="announcementID">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let element"> {{element.announcementID}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="announcementTitle">
+          <th mat-header-cell *matHeaderCellDef> Title </th>
+          <td mat-cell *matCellDef="let element"> {{element.announcementTitle}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="announcementContent">
+          <th mat-header-cell *matHeaderCellDef>Content </th>
+          <td mat-cell *matCellDef="let element"> {{element.announcementContent}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="announcementLink">
+          <th mat-header-cell *matHeaderCellDef>Link </th>
+          <td mat-cell *matCellDef="let element"> {{element.announcementLink}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="announcementTarget">
+          <th mat-header-cell *matHeaderCellDef> Target </th>
+          <td mat-cell *matCellDef="let element"> {{element.announcementTarget}} </td>
+        </ng-container>
+
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef> ACTION </th>
+          <td mat-cell *matCellDef="let element">
+            <button type="button" [value]="element" matTooltip="Edit Announcement Details" (click)="updateAnnouncementDetails(element)" mat-raised-button color="primary" mdbWavesEffect><i class="fas fa-pencil-alt"></i></button>&nbsp;
+            <button type="button" [value]="element"  matTooltip="Remove Announcement Details"(click)="removeAnnouncementDetails(element)" mat-raised-button color="warn" mdbWavesEffect><i class="fas fa-trash"></i></button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+
+  </mat-card>
+</div>

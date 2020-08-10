@@ -14,6 +14,8 @@ import {ManageStudentDetailsComponent} from "./Component/manage-student-details/
 import {ManageTeacherDetailsComponent} from "./Component/manage-teacher-details/manage-teacher-details.component";
 import {InsertExamMarksComponent} from "./Component/insert-exam-marks/insert-exam-marks.component";
 import {AuthGuard} from "./AuthGuard/auth.guard";
+import {ManageAnnouncementDetailsComponent} from "./Component/manage-announcement-details/manage-announcement-details.component";
+import {NewAnnouncementComponent} from "./Component/new-announcement/new-announcement.component";
 
 
 const routes: Routes = [
@@ -56,7 +58,8 @@ const routes: Routes = [
   },
   {
     path:'signup',
-    component:SignupPageComponent
+    component:SignupPageComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'login',
@@ -64,7 +67,12 @@ const routes: Routes = [
   },
   {
     path:'announcement',
-    component:AddAnnouncementDetailsComponent,
+    component:ManageAnnouncementDetailsComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path:'newAnnouncement',
+    component:NewAnnouncementComponent,
     canActivate:[AuthGuard]
   },
   {

@@ -1,1 +1,19 @@
-<p>main-login works!</p>
+<div fxLayoutAlign="center center" fxFlexFill>
+  <mat-card fxFlex="25">
+
+    <form [formGroup]="loginForm" fxLayoutAlign="stretched" fxLayout="column" (ngSubmit)="loginUser()">
+      <div class="image" fxLayoutAlign="center center">
+        <img src="assets/user.png" class="img-circle" alt="User Image" style="max-height: 200px;">
+      </div>
+      <mat-form-field >
+        <input formControlName="userId" matInput placeholder="ID" >
+      </mat-form-field>
+
+      <mat-form-field >
+        <input formControlName="password" matInput type="password" placeholder="Password" >
+      </mat-form-field>
+      <button mat-button mat-raised-button color="primary" type="submit">Log In</button>
+    </form>
+
+  </mat-card>
+</div>

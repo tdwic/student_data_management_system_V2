@@ -1,8 +1,12 @@
 .table-data-container{
   max-height: 500px;
-  min-height: 300px;
+  min-height: 500px;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+.table-data-container th {
+  font-size: 17px;
 }
 
 .newStudentButton{

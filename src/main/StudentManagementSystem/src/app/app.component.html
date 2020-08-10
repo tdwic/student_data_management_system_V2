@@ -8,93 +8,36 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a routerLink="home" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a routerLink="contact" class="nav-link">Contact</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">About Us</a>
+        <a routerLink="about" class="nav-link">About Us</a>
       </li>
     </ul>
 
-<!--    &lt;!&ndash; SEARCH FORM &ndash;&gt;-->
-<!--    <form class="form-inline ml-3">-->
-<!--      <div class="input-group input-group-sm">-->
-<!--        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">-->
-<!--        <div class="input-group-append">-->
-<!--          <button class="btn btn-navbar" type="submit">-->
-<!--            <i class="fas fa-search"></i>-->
-<!--          </button>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </form>-->
-
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
+
+      <li class="nav-item" *ngIf="!toggleLogOutButton();">
+        <a class="nav-link" (click)="componentNameUpdate('Login')" routerLink="login" role="button">
+          <i class="fas fa-sign-in-alt"></i>
         </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="assets/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="assets/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="assets/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
       </li>
+
+      <li class="nav-item" (click)="componentNameUpdate('Sign Up')" *ngIf="toggleTeacherPanel();">
+        <a class="nav-link"  routerLink="signup" role="button">
+          <i class="fas fa-user-plus"></i>
+        </a>
+      </li>
+
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
+          <span class="badge badge-warning navbar-badge">{{getNoOfNotifications()}}</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-header">15 Notifications</span>
@@ -117,16 +60,45 @@
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li>
+
+      <li class="nav-item dropdown" *ngIf="toggleLogOutButton();">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fas fa-user-lock"></i>
+          <span class="badge badge-warning navbar-badge">*</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-header">User</span>
+
+          <div class="dropdown-divider"></div>
+
+          <a href="#" class="dropdown-item">
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+              <div class="image">
+                <img src="assets/avatar5.png" class="img-circle elevation-2" alt="User Image">
+              </div>
+              <div class="info">
+                <a href="#" class="d-block">Alexander Pierce</a>
+              </div>
+            </div>
+          </a>
+
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item dropdown-footer" (click)="logOutUser();componentNameUpdate('Dashboard');">Logout</a>
+
+        </div>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
           class="fas fa-th-large"></i></a>
       </li>
+
     </ul>
   </nav>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-warning elevation-4">
+  <aside class="main-sidebar sidebar-dark-blue elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="assets/mainLogo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -149,54 +121,33 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+            <a routerLink="home" (click)="componentNameUpdate('Dashboard')" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-                <!--                <i class="right fas fa-angle-left"></i>-->
               </p>
             </a>
-            <!--            <ul class="nav nav-treeview">-->
-            <!--              <li class="nav-item">-->
-            <!--                <a href="#" class="nav-link active">-->
-            <!--                  <i class="far fa-circle nav-icon"></i>-->
-            <!--                  <p>Active Page</p>-->
-            <!--                </a>-->
-            <!--              </li>-->
-            <!--              <li class="nav-item">-->
-            <!--                <a href="#" class="nav-link">-->
-            <!--                  <i class="far fa-circle nav-icon"></i>-->
-            <!--                  <p>Inactive Page</p>-->
-            <!--                </a>-->
-            <!--              </li>-->
-            <!--            </ul>-->
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-<!--              <i class="nav-icon fas fa-th"></i>-->
+            <a routerLink="course" class="nav-link" (click)="clicked('course'); componentNameUpdate('Courses');">
               <i class="nav-icon fas fa-user-graduate"></i>
               <p>
                 COURSES
-<!--                <span class="right badge badge-danger">New</span>-->
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a routerLink="result" class="nav-link">
-<!--              <i class="nav-icon fas fa-bell"></i>-->
+            <a routerLink="result" class="nav-link" (click)="clicked('result'); componentNameUpdate('Results');">
               <i class="nav-icon fas fa-award"></i>
               <p>
                 RESULTS
-<!--                <span class="right badge badge-danger">New</span>-->
               </p>
             </a>
           </li>
 
-          <li class="nav-item has-treeview menu-close">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview menu-close" *ngIf="toggleTeacherPanel();">
+            <a class="nav-link">
 <!--              <i class="nav-icon fas fa-tachometer-alt"></i>-->
               <i class="nav-icon fas fa-chalkboard-teacher"></i>
               <p>
@@ -206,28 +157,28 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a routerLink="announcement" (click)="componentNameUpdate('Manage Announcement')" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>One</p>
+                  <p>Manage Announcement</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a routerLink="studentDetails" (click)="componentNameUpdate('Manage Student Details')" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Two</p>
+                  <p>Manage Student Details</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a routerLink="insertMarks" (click)="componentNameUpdate('Manage Exam Details')" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Three</p>
+                  <p>Manage Exam Details</p>
                 </a>
               </li>
             </ul>
           </li>
 
-          <li class="nav-item has-treeview menu-close">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview menu-close" *ngIf="toggleAdminPanel();">
+            <a class="nav-link">
 <!--              <i class="nav-icon fas fa-tachometer-alt"></i>-->
               <i class="nav-icon fas fa-user-shield"></i>
               <p>
@@ -271,7 +222,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+            <h1 class="m-0 text-dark">{{componentName}}</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
