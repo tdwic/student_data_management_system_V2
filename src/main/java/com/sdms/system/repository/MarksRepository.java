@@ -11,4 +11,6 @@ public interface MarksRepository extends MongoRepository <Marks,String> {
 
     List<Marks> findMarksByStudentID(String studentID);
 
+    public void removeMarksByRecordID(String recordID);
+
 }

@@ -25,4 +25,8 @@ public class MarksService {
         return marksRepository.findAll();
     }
 
+    public void removeMarksByRecordID(String recordID){
+        marksRepository.removeMarksByRecordID(recordID);
+    }
+
 }

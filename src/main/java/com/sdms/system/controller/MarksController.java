@@ -24,6 +24,11 @@ public class MarksController {
         return marksService.findMarksByStudentID(studentID);
     }
 
+    @RequestMapping(value = "/marks/{recordID}",method = RequestMethod.DELETE)
+    public void removeStudent(@PathVariable String recordID){
+        marksService.removeMarksByRecordID(recordID);
+    }
+
     @RequestMapping(value = "/marks", method = RequestMethod.GET)
     public List<Marks> getAllMarksList(){
         return marksService.findAllMarksDetails();

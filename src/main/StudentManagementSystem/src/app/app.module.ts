@@ -67,7 +67,12 @@ import { ManageExamMarksDetailsComponent } from './Component/manage-exam-marks-d
     UpdateAnnouncementDetailsComponent,
     ManageExamMarksDetailsComponent
   ],
-  entryComponents:[RemoveConfirmationComponent,UpdateStudentComponent,NewAnnouncementComponent, UpdateAnnouncementDetailsComponent, SignupPageComponent],
+  entryComponents:[ RemoveConfirmationComponent,
+                    UpdateStudentComponent,
+                    NewAnnouncementComponent,
+                    UpdateAnnouncementDetailsComponent,
+                    SignupPageComponent,
+                    InsertExamMarksComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

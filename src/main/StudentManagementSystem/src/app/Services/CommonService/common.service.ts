@@ -60,6 +60,11 @@ export class CommonService {
   public removeAnnouncement(announcementID){
     return this._http.delete(this._apiUrl_+"/announcement/" + announcementID);
   }
+
+  public removeMarks(recordID){
+    return this._http.delete(this._apiUrl_+"/marks/" + recordID);
+  }
+
   //Delete Methods
 
 
