@@ -4,6 +4,7 @@ import {CommonService} from "../../Services/CommonService/common.service";
 import {MatDialog} from "@angular/material/dialog";
 import {InsertExamMarksComponent} from "../insert-exam-marks/insert-exam-marks.component";
 import {RemoveConfirmationComponent} from "../remove-confirmation/remove-confirmation.component";
+import {UpdateMarkDetailsComponent} from "../update-mark-details/update-mark-details.component";
 
 class StudentMarks {
   recordID: string;
@@ -41,7 +42,16 @@ export class ManageExamMarksDetailsComponent implements OnInit {
   }
 
   addMarksFroStudent() {
-
+    this._matDialog.open(InsertExamMarksComponent,{
+      disableClose:true,
+      width:"50%",
+    }).afterClosed().subscribe( res => {
+      if (res == "true"){
+        this.populateTable();
+      }else {
+        this._commonService.snackBarShow("Action Terminated By the User!")
+      }
+    })
   }
 
   populateTable(){
@@ -55,7 +65,7 @@ export class ManageExamMarksDetailsComponent implements OnInit {
 
     this.studentMarks = element;
 
-    this._matDialog.open(InsertExamMarksComponent,{
+    this._matDialog.open(UpdateMarkDetailsComponent,{
       disableClose:true,
       width:"50%",
       data:{

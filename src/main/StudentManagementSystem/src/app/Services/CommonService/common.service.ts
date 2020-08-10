@@ -82,6 +82,10 @@ export class CommonService {
   public newAnnouncement(Announcement){
     return this._http.post<any>(this._apiUrl_+"/announcement" , Announcement);
   }
+
+  public newMarks(Marks){
+    return this._http.post<any>(this._apiUrl_+"/marks" , Marks);
+  }
   //Post Methods
 
 
