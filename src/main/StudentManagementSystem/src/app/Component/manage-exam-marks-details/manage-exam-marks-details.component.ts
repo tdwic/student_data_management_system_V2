@@ -9,6 +9,7 @@ import {UpdateMarkDetailsComponent} from "../update-mark-details/update-mark-det
 class StudentMarks {
   recordID: string;
   studentID: string;
+  studentName: string;
   firstTermMarks: string;
   secondTermMarks: string;
   thirdTermMarks: string;
@@ -16,6 +17,21 @@ class StudentMarks {
   secondTermNote: string;
   thirdTermNote: string;
 }
+
+class Student {
+  studentTokenID:string = '';
+  studentID:string = '';
+  studentName:string ='';
+  studentFirstName:string = '';
+  studentLastName:string = '';
+  studentAddress:string ='';
+  studentPassword:string ='';
+  studentD0B:string ='';
+  studentGender:string ='';
+  studentPhone:string ='';
+  studentParent:string ='';
+}
+
 
 
 @Component({
@@ -26,7 +42,7 @@ class StudentMarks {
 export class ManageExamMarksDetailsComponent implements OnInit {
 
   studentMarksList:StudentMarks[];
-
+  student:Student;
   studentMarks:StudentMarks;
 
   displayedColumns:string[] = ['studentID','firstTermMarks','secondTermMarks','thirdTermMarks','firstTermNote','secondTermNote','thirdTermNote','action'];
@@ -65,13 +81,26 @@ export class ManageExamMarksDetailsComponent implements OnInit {
 
     this.studentMarks = element;
 
-    this._matDialog.open(UpdateMarkDetailsComponent,{
-      disableClose:true,
-      width:"50%",
-      data:{
-        marksDetails:this.studentMarks
-      }
+    this._commonService.authenticateStudentByStudentID(this.studentMarks.studentID).subscribe( res => {
+
+      this.student = res;
+      this.studentMarks.studentName = this.student.studentName;
+
+      this._matDialog.open(UpdateMarkDetailsComponent,{
+        disableClose:true,
+        width:"50%",
+        data:{
+          marksDetails:this.studentMarks
+        }
+      }).afterClosed().subscribe( res=> {
+        if (res == "true"){
+          this.populateTable();
+        }else {
+          this._commonService.snackBarShow("Action Terminated By the User!")
+        }
+      })
     })
+
   }
 
   removeMarks(element) {
@@ -94,4 +123,5 @@ export class ManageExamMarksDetailsComponent implements OnInit {
       }
     })
   }
+
 }

@@ -138,7 +138,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a routerLink="result" class="nav-link" (click)="clicked('result'); componentNameUpdate('Results');">
+            <a routerLink="result" class="nav-link" *ngIf="!toggleTeacherPanel();" (click)="clicked('result'); componentNameUpdate('Results');">
               <i class="nav-icon fas fa-award"></i>
               <p>
                 RESULTS
