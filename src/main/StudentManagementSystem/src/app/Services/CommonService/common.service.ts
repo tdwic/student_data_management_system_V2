@@ -99,6 +99,10 @@ export class CommonService {
   public newMarks(Marks){
     return this._http.post<any>(this._apiUrl_+"/marks" , Marks);
   }
+
+  public newTeacher(Teacher){
+    return this._http.post<any>(this._apiUrl_+"/teacher" , Teacher);
+  }
   //Post Methods
 
 
