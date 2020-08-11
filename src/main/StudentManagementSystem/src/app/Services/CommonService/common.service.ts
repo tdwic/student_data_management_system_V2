@@ -103,6 +103,11 @@ export class CommonService {
   public newTeacher(Teacher){
     return this._http.post<any>(this._apiUrl_+"/teacher" , Teacher);
   }
+
+  public updateTeacher(Teacher){
+    return this._http.post<any>(this._apiUrl_+"/teacher" , Teacher);
+  }
+
   //Post Methods
 
 
