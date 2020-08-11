@@ -1,0 +1,20 @@
+.banner-area{
+  width: 100%;
+  height: 80vh;
+  background: url("src/assets/mainImage.jpg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px;
+
+}
+
+.home-text{
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 70px;
+  color: wheat;
+}
+
+.home-text h1 {
+  font-size: 70px;
+}

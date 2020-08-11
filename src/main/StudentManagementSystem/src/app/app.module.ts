@@ -40,6 +40,7 @@ import { ManageExamMarksDetailsComponent } from './Component/manage-exam-marks-d
 import { UpdateMarkDetailsComponent } from './Component/update-mark-details/update-mark-details.component';
 import { NewTeacherComponent } from './Component/new-teacher/new-teacher.component';
 import { UpdateTeacherComponent } from './Component/update-teacher/update-teacher.component';
+import { MainHomePageComponent } from './Component/main-home-page/main-home-page.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { UpdateTeacherComponent } from './Component/update-teacher/update-teache
     ManageExamMarksDetailsComponent,
     UpdateMarkDetailsComponent,
     NewTeacherComponent,
-    UpdateTeacherComponent
+    UpdateTeacherComponent,
+    MainHomePageComponent
   ],
   entryComponents:[ RemoveConfirmationComponent,
                     UpdateStudentComponent,

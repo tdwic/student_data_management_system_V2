@@ -14,17 +14,22 @@ import {AuthGuard} from "./AuthGuard/auth.guard";
 import {ManageAnnouncementDetailsComponent} from "./Component/manage-announcement-details/manage-announcement-details.component";
 import {NewAnnouncementComponent} from "./Component/new-announcement/new-announcement.component";
 import {ManageExamMarksDetailsComponent} from "./Component/manage-exam-marks-details/manage-exam-marks-details.component";
+import {MainHomePageComponent} from "./Component/main-home-page/main-home-page.component";
 
 
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'/home',
+    redirectTo:'/mainHome',
     pathMatch:'full'
   },
   {
     path:'home',
     component:HomePageComponent
+  },
+  {
+    path:'mainHome',
+    component:MainHomePageComponent
   },
   {
     path:'about',

@@ -8,7 +8,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a routerLink="home" class="nav-link">Home</a>
+        <a routerLink="mainHome" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a routerLink="contact" class="nav-link">Contact</a>
@@ -71,10 +71,19 @@
 
           <div class="dropdown-divider"></div>
 
-          <a href="#" class="dropdown-item">
+          <a href="#" class="dropdown-item" *ngIf="!toggleAdminPanel();">
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-              <div class="image">
+              <div class="image" *ngIf="uGender == 'Male'">
                 <img src="assets/avatar5.png" class="img-circle elevation-2" alt="User Image">
+              </div>
+              <div class="image" *ngIf="uGender == 'Admin'">
+                <img src="assets/admin.jpg" class="img-circle elevation-2" alt="User Image">
+              </div>
+              <div class="image" *ngIf="uGender == 'none'">
+                <img src="assets/unknown.jpg" class="img-circle elevation-2" alt="User Image">
+              </div>
+              <div class="image" *ngIf="uGender == 'Female'">
+                <img src="assets/avatar2.png" class="img-circle elevation-2" alt="User Image">
               </div>
               <div class="info">
                 <a href="#" class="d-block">{{uName}}</a>
@@ -88,9 +97,10 @@
         </div>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
-          class="fas fa-th-large"></i></a>
+      <li class="nav-item" (click)="componentNameUpdate('Sign Up'); userConfig();" *ngIf="toggleTeacherPanel() || toggleStudentPanel();">
+        <a class="nav-link" role="button">
+          <i class="fas fa-user-cog"></i>
+        </a>
       </li>
 
     </ul>
@@ -130,8 +140,8 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item has-treeview menu-open">
-            <a routerLink="home" (click)="componentNameUpdate('Dashboard')" class="nav-link active">
+          <li class="nav-item">
+            <a routerLink="home" (click)="componentNameUpdate('Dashboard')" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -146,8 +156,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a routerLink="result" class="nav-link" *ngIf="!toggleTeacherPanel();" (click)="clicked('result'); componentNameUpdate('Results');">
+          <li class="nav-item" *ngIf="!toggleAdminPanel();">
+            <a routerLink="result" class="nav-link" *ngIf="!toggleTeacherPanel() || !toggleTeacherPanel();" (click)="clicked('result'); componentNameUpdate('Results');">
               <i class="nav-icon fas fa-award"></i>
               <p>
                 RESULTS

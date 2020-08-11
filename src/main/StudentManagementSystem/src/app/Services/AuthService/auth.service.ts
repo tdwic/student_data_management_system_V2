@@ -29,6 +29,10 @@ export class AuthService {
     return !! (localStorage.getItem('role') == this.teacherRoleEncryptCodeNumber);
   }
 
+  studentLogged(){
+    return !! (localStorage.getItem('role') == this.studentRoleEncryptCodeNumber);
+  }
+
   authenticateUser(userID, passWord, userType){
 
     if (userType == '_STUDENT_'){
@@ -120,6 +124,7 @@ export class AuthService {
           localStorage.setItem('token',Teacher.teacherTokenID);
           localStorage.setItem('role',this.loggedUserRoleType);
           localStorage.setItem('gender',Teacher.teacherGender);
+          localStorage.setItem('teacherID',Teacher.teacherID);
           localStorage.setItem('name',Teacher.teacherName.split(' ')[0]);
           if (this._commonService.tempLocation.length == 0){
             this._router.navigate(['home']);
@@ -158,6 +163,9 @@ export class AuthService {
     }
     if (localStorage.getItem('role') != null){
       localStorage.removeItem('role');
+    }
+    if (localStorage.getItem('teacherID') != null){
+      localStorage.removeItem('teacherID');
     }
     if (localStorage.getItem('name') != null){
       localStorage.removeItem('name');
