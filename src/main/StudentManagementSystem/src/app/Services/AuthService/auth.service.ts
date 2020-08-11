@@ -55,6 +55,7 @@ export class AuthService {
           localStorage.setItem('token',Student.studentTokenID.toString());
           localStorage.setItem('studentID',Student.studentID.toString());
           localStorage.setItem('role',this.loggedUserRoleType);
+          localStorage.setItem('gender',Student.studentGender);
           localStorage.setItem('name',Student.studentName.split(' ')[0]);
           if (this._commonService.tempLocation.length == 0){
             this._router.navigate(['home']);
@@ -83,6 +84,7 @@ export class AuthService {
           this.loggedUserRoleType = this.adminRoleEncryptCodeNumber;
           localStorage.setItem('name',Admin.adminID);
           localStorage.setItem('token',Admin.adminTokenID.toString());
+          localStorage.setItem('gender','Admin');
           localStorage.setItem('role',this.loggedUserRoleType);
           if (this._commonService.tempLocation.length == 0){
             this._router.navigate(['home']);
@@ -117,6 +119,7 @@ export class AuthService {
           this.loggedUserRoleType = this.teacherRoleEncryptCodeNumber;
           localStorage.setItem('token',Teacher.teacherTokenID);
           localStorage.setItem('role',this.loggedUserRoleType);
+          localStorage.setItem('gender',Teacher.teacherGender);
           localStorage.setItem('name',Teacher.teacherName.split(' ')[0]);
           if (this._commonService.tempLocation.length == 0){
             this._router.navigate(['home']);
@@ -158,6 +161,11 @@ export class AuthService {
     }
     if (localStorage.getItem('name') != null){
       localStorage.removeItem('name');
+      localStorage.setItem('name','User');
+    }
+    if (localStorage.getItem('gender') != null){
+      localStorage.removeItem('gender');
+      localStorage.setItem('gender','none');
     }
   }
 

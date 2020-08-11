@@ -110,11 +110,20 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
+        <div class="image" *ngIf="uGender == 'Male'">
           <img src="assets/avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
+        <div class="image" *ngIf="uGender == 'Admin'">
+          <img src="assets/admin.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="image" *ngIf="uGender == 'none'">
+          <img src="assets/unknown.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="image" *ngIf="uGender == 'Female'">
+          <img src="assets/avatar2.png" class="img-circle elevation-2" alt="User Image">
+        </div>
         <div class="info">
-          <a href="#" class="d-block">{{userName()}}</a>
+          <a href="#" class="d-block">{{uName}}</a>
         </div>
       </div>
 

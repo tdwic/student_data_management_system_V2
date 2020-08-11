@@ -13,6 +13,7 @@ export class AppComponent {
   noOfNotifications:number=0;
 
   uName:string='user'
+  uGender:string='none'
 
   componentName:string='Dashboard';
 
@@ -24,23 +25,32 @@ export class AppComponent {
 
 
   logOutUser(){
+    this.uName = localStorage.getItem('name');
     this._authService.logOutUser();
   }
 
 
   getNoOfNotifications(){
+    this.uName = localStorage.getItem('name');
+    this.uGender = localStorage.getItem('gender');
     return this._commonService.getNotificationNumber();
   }
 
   toggleLogOutButton(){
+    this.uName = localStorage.getItem('name');
+    this.uGender = localStorage.getItem('gender');
     return this._authService.loggedInUser();
   }
 
   toggleTeacherPanel(){
+    this.uName = localStorage.getItem('name');
+    this.uGender = localStorage.getItem('gender');
     return this._authService.teacherLogged();
   }
 
   toggleAdminPanel(){
+    this.uName = localStorage.getItem('name');
+    this.uGender = localStorage.getItem('gender');
     return this._authService.adminLogged();
   }
 
@@ -57,5 +67,5 @@ export class AppComponent {
   userName(){
     return this._commonService.userName;
   }
-  
+
 }
