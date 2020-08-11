@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {AuthService} from "./Services/AuthService/auth.service";
 import {CommonService} from "./Services/CommonService/common.service";
+import {interval} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -11,10 +12,14 @@ export class AppComponent {
   title = 'StudentManagementSystem';
   noOfNotifications:number=0;
 
+  uName:string='user'
+
   componentName:string='Dashboard';
 
   constructor(private _authService:AuthService,
-              private  _commonService:CommonService) { }
+              private  _commonService:CommonService) {
+    this.uName = localStorage.getItem('name');
+  }
 
 
 
@@ -49,6 +54,8 @@ export class AppComponent {
     this.componentName = componentName;
   }
 
-
-
+  userName(){
+    return this._commonService.userName;
+  }
+  
 }

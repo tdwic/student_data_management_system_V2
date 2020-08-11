@@ -4,9 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutPageComponent } from './Component/about-page/about-page.component';
-import { AddAnnouncementDetailsComponent } from './Component/add-announcement-details/add-announcement-details.component';
-import { AdminPageComponent } from './Component/admin-page/admin-page.component';
-import { CommonServiceComponent } from './Component/common-service/common-service.component';
 import { ContactPageComponent } from './Component/contact-page/contact-page.component';
 import { CoursePageComponent } from './Component/course-page/course-page.component';
 import { HomePageComponent } from './Component/home-page/home-page.component';
@@ -18,7 +15,6 @@ import { NewAnnouncementComponent } from './Component/new-announcement/new-annou
 import { RemoveConfirmationComponent } from './Component/remove-confirmation/remove-confirmation.component';
 import { ResultPageComponent } from './Component/result-page/result-page.component';
 import { SignupPageComponent } from './Component/signup-page/signup-page.component';
-import { TeacherPageComponent } from './Component/teacher-page/teacher-page.component';
 import { UpdateStudentComponent } from './Component/update-student/update-student.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -42,15 +38,14 @@ import { ManageAnnouncementDetailsComponent } from './Component/manage-announcem
 import { UpdateAnnouncementDetailsComponent } from './Component/update-announcement-details/update-announcement-details.component';
 import { ManageExamMarksDetailsComponent } from './Component/manage-exam-marks-details/manage-exam-marks-details.component';
 import { UpdateMarkDetailsComponent } from './Component/update-mark-details/update-mark-details.component';
+import { NewTeacherComponent } from './Component/new-teacher/new-teacher.component';
+import { UpdateTeacherComponent } from './Component/update-teacher/update-teacher.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutPageComponent,
-    AddAnnouncementDetailsComponent,
-    AdminPageComponent,
-    CommonServiceComponent,
     ContactPageComponent,
     CoursePageComponent,
     HomePageComponent,
@@ -62,12 +57,13 @@ import { UpdateMarkDetailsComponent } from './Component/update-mark-details/upda
     RemoveConfirmationComponent,
     ResultPageComponent,
     SignupPageComponent,
-    TeacherPageComponent,
     UpdateStudentComponent,
     ManageAnnouncementDetailsComponent,
     UpdateAnnouncementDetailsComponent,
     ManageExamMarksDetailsComponent,
-    UpdateMarkDetailsComponent
+    UpdateMarkDetailsComponent,
+    NewTeacherComponent,
+    UpdateTeacherComponent
   ],
   entryComponents:[ RemoveConfirmationComponent,
                     UpdateStudentComponent,
@@ -75,7 +71,9 @@ import { UpdateMarkDetailsComponent } from './Component/update-mark-details/upda
                     UpdateAnnouncementDetailsComponent,
                     SignupPageComponent,
                     InsertExamMarksComponent,
-                    UpdateMarkDetailsComponent],
+                    UpdateMarkDetailsComponent,
+                    NewTeacherComponent,
+                    UpdateTeacherComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

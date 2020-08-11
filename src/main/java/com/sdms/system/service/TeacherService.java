@@ -25,5 +25,8 @@ public class TeacherService {
         return teacherRepository.findAll();
     }
 
+    public void removeTeacherByTeacherID(String teacherID){
+        teacherRepository.removeTeacherByTeacherID(teacherID);
+    }
 
 }

@@ -29,4 +29,9 @@ public class TeacherController {
         return teacherService.findAllTeacherByTeacherID();
     }
 
+    @RequestMapping(value = "/teacher/{teacherID}", method = RequestMethod.DELETE)
+    public void removeTeacherByTeacherID(@PathVariable String teacherID){
+        teacherService.removeTeacherByTeacherID(teacherID);
+    }
+
 }

@@ -11,11 +11,17 @@ export class CommonService {
   noOfNotifications:number=0;
   currentInComponentName:string = "Dashboard";
   tempLocation:string[] = [];
+  userName:string='User';
+
 
   _apiUrl_:string = "http://localhost:8181";
 
   constructor(private  _http:HttpClient,
-              private  _snackBar:MatSnackBar) { }
+              private  _snackBar:MatSnackBar) {
+
+    this.userName = localStorage.getItem('name');
+
+  }
 
 
   //FindById Methods
@@ -48,6 +54,9 @@ export class CommonService {
   public getAllStudentMarks():Observable<any>{
     return this._http.get(this._apiUrl_+"/marks");
   }
+  public getAllTeachers():Observable<any>{
+    return this._http.get(this._apiUrl_+"/teacher");
+  }
   //FindAll Methods
 
 
@@ -63,6 +72,10 @@ export class CommonService {
 
   public removeMarks(recordID){
     return this._http.delete(this._apiUrl_+"/marks/" + recordID);
+  }
+
+  public removeTeacher(teacherID){
+    return this._http.delete(this._apiUrl_+"/teacher/" + teacherID);
   }
 
   //Delete Methods

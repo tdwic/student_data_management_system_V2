@@ -5,11 +5,8 @@ import {AboutPageComponent} from "./Component/about-page/about-page.component";
 import {ResultPageComponent} from "./Component/result-page/result-page.component";
 import {ContactPageComponent} from "./Component/contact-page/contact-page.component";
 import {CoursePageComponent} from "./Component/course-page/course-page.component";
-import {TeacherPageComponent} from "./Component/teacher-page/teacher-page.component";
-import {AdminPageComponent} from "./Component/admin-page/admin-page.component";
 import {SignupPageComponent} from "./Component/signup-page/signup-page.component";
 import {MainLoginComponent} from "./Component/main-login/main-login.component";
-import {AddAnnouncementDetailsComponent} from "./Component/add-announcement-details/add-announcement-details.component";
 import {ManageStudentDetailsComponent} from "./Component/manage-student-details/manage-student-details.component";
 import {ManageTeacherDetailsComponent} from "./Component/manage-teacher-details/manage-teacher-details.component";
 import {InsertExamMarksComponent} from "./Component/insert-exam-marks/insert-exam-marks.component";
@@ -47,16 +44,7 @@ const routes: Routes = [
     component:CoursePageComponent,
     canActivate:[AuthGuard]
   },
-  {
-    path:'teacher',
-    component:TeacherPageComponent,
-    canActivate:[AuthGuard]
-  },
-  {
-    path:'admin',
-    component:AdminPageComponent,
-    canActivate:[AuthGuard]
-  },
+
   {
     path:'signup',
     component:SignupPageComponent,

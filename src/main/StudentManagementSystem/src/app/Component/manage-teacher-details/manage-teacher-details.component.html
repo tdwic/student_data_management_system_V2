@@ -1,1 +1,61 @@
-<p>manage-teacher-details works!</p>
+<button class="newStudentButton" (click)="addNewStudent();" mat-raised-button matTooltip="New Student"  color="primary"><i class="fas fa-chalkboard-teacher"></i></button>
+
+<div fxLayoutAlign="center center" fxFlexFill>
+  <mat-card fxFlex="100">
+    <div class="table-data-container">
+
+      <table mat-table [dataSource]="dataSource">
+
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="teacherID">
+          <th mat-header-cell *matHeaderCellDef>teacherID</th>
+          <td mat-cell *matCellDef="let element"> {{element.teacherID}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="teacherName">
+          <th mat-header-cell *matHeaderCellDef> teacherName </th>
+          <td mat-cell *matCellDef="let element"> {{element.teacherName}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="teacherPassword">
+          <th mat-header-cell *matHeaderCellDef>teacherPassword</th>
+          <td mat-cell *matCellDef="let element"> {{element.teacherPassword}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="teacherGender">
+          <th mat-header-cell *matHeaderCellDef>teacherGender</th>
+          <td mat-cell *matCellDef="let element"> {{element.teacherGender}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="teacherEmail">
+          <th mat-header-cell *matHeaderCellDef>teacherEmail</th>
+          <td mat-cell *matCellDef="let element"> {{element.teacherEmail}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="teacherContactNO">
+          <th mat-header-cell *matHeaderCellDef>teacherContactNO</th>
+          <td mat-cell *matCellDef="let element"> {{element.teacherContactNO}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef> ACTION </th>
+          <td mat-cell *matCellDef="let element">
+            <button type="button" [value]="element" matTooltip="Edit Student Details" (click)="updateTeacher(element)" mat-raised-button color="primary" mdbWavesEffect><i class="fas fa-pencil-alt"></i></button>&nbsp;
+
+            <button type="button" [value]="element" matTooltip="Remove Student Details" (click)="removeTeacher(element)" mat-raised-button color="warn" mdbWavesEffect><i class="fas fa-trash"></i></button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    </div>
+  </mat-card>
+</div>
