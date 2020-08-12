@@ -4,17 +4,17 @@ import {CommonService} from "../../Services/CommonService/common.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 class Student {
-  studentTokenID:string = '';
-  studentID:string = '';
-  studentFirstName:string = '';
-  studentLastName:string = '';
-  studentName:string ='';
-  studentAddress:string ='';
-  studentPassword:string ='';
-  studentD0B:string ='';
-  studentGender:string ='';
-  studentPhone:string ='';
-  studentParent:string ='';
+  studentTokenID: string = '';
+  studentID: string = '';
+  studentFirstName: string = '';
+  studentLastName: string = '';
+  studentName: string = '';
+  studentAddress: string = '';
+  studentPassword: string = '';
+  studentD0B: string = '';
+  studentGender: string = '';
+  studentPhone: string = '';
+  studentParent: string = '';
 }
 
 @Component({
@@ -24,14 +24,14 @@ class Student {
 })
 export class UpdateStudentComponent implements OnInit {
 
-  studentDetails:Student;
-  UpdatedStudentDetails:Student;
+  studentDetails: Student;
+  UpdatedStudentDetails: Student;
+  roleType: string = '';
+  studentDetailsForm: FormGroup;
 
-  studentDetailsForm:FormGroup;
-
-  constructor(@Inject(MAT_DIALOG_DATA) public data:any ,
-              private  _commonService:CommonService,
-              private dialogRef : MatDialogRef<UpdateStudentComponent>) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+              private  _commonService: CommonService,
+              private dialogRef: MatDialogRef<UpdateStudentComponent>) {
     this.studentDetails = data.studentData;
     this.UpdatedStudentDetails = data.studentData;
   }
@@ -39,57 +39,61 @@ export class UpdateStudentComponent implements OnInit {
   ngOnInit(): void {
 
 
-
     this.studentDetailsForm = new FormGroup({
-      firstName:new FormControl(this.studentDetails.studentFirstName,[Validators.required]),
-      lastName:new FormControl(this.studentDetails.studentLastName,[Validators.required]),
-      studentID:new FormControl(this.studentDetails.studentID,[Validators.required]),
-      studentAddress:new FormControl(this.studentDetails.studentAddress,[Validators.required]),
-      studentPassword:new FormControl(this.studentDetails.studentPassword,[Validators.required]),
-      studentPasswordConfirm:new FormControl(this.studentDetails.studentPassword,[Validators.required]),
-      studentPhone:new FormControl(this.studentDetails.studentPhone,[Validators.required]),
-      studentGender:new FormControl(this.studentDetails.studentGender,[Validators.required]),
-      studentD0B:new FormControl(this.studentDetails.studentD0B,[Validators.required]),
-      studentParent:new FormControl(this.studentDetails.studentParent,[Validators.required]),
+      firstName: new FormControl(this.studentDetails.studentFirstName, [Validators.required]),
+      lastName: new FormControl(this.studentDetails.studentLastName, [Validators.required]),
+      studentID: new FormControl(this.studentDetails.studentID, [Validators.required]),
+      studentAddress: new FormControl(this.studentDetails.studentAddress, [Validators.required]),
+      studentPassword: new FormControl(this.studentDetails.studentPassword, [Validators.required]),
+      studentPasswordConfirm: new FormControl(this.studentDetails.studentPassword, [Validators.required]),
+      studentPhone: new FormControl(this.studentDetails.studentPhone, [Validators.required]),
+      studentGender: new FormControl(this.studentDetails.studentGender, [Validators.required]),
+      studentD0B: new FormControl(this.studentDetails.studentD0B, [Validators.required]),
+      studentParent: new FormControl(this.studentDetails.studentParent, [Validators.required]),
 
     });
 
 
   }
 
-  updateStudentDetails(){
+  updateStudentDetails() {
 
-    if (this.studentDetailsForm.valid){
+    if (this.studentDetailsForm.valid) {
+      this.roleType = this.studentDetailsForm.controls['studentID'].value;
+      this.roleType = this.roleType.substring(0, 2);
+      if (this.roleType === 'ST') {
 
-      this.UpdatedStudentDetails.studentName = this.studentDetailsForm.value['firstName'] + " " + this.studentDetailsForm.value['lastName'];
+        this.UpdatedStudentDetails.studentName = this.studentDetailsForm.value['firstName'] + " " + this.studentDetailsForm.value['lastName'];
 
-      this.UpdatedStudentDetails.studentFirstName = this.studentDetailsForm.value['firstName'];
-      this.UpdatedStudentDetails.studentLastName = this.studentDetailsForm.value['lastName'];
-      this.UpdatedStudentDetails.studentID = this.studentDetailsForm.value['studentID'];
-      this.UpdatedStudentDetails.studentAddress = this.studentDetailsForm.value['studentAddress'];
+        this.UpdatedStudentDetails.studentFirstName = this.studentDetailsForm.value['firstName'];
+        this.UpdatedStudentDetails.studentLastName = this.studentDetailsForm.value['lastName'];
+        this.UpdatedStudentDetails.studentID = this.studentDetailsForm.value['studentID'];
+        this.UpdatedStudentDetails.studentAddress = this.studentDetailsForm.value['studentAddress'];
 
-      this.UpdatedStudentDetails.studentPhone = this.studentDetailsForm.value['studentPhone'];
-      this.UpdatedStudentDetails.studentGender = this.studentDetailsForm.value['studentGender'];
-      this.UpdatedStudentDetails.studentD0B = this.studentDetailsForm.value['studentD0B'];
-      this.UpdatedStudentDetails.studentParent = this.studentDetailsForm.value['studentParent'];
+        this.UpdatedStudentDetails.studentPhone = this.studentDetailsForm.value['studentPhone'];
+        this.UpdatedStudentDetails.studentGender = this.studentDetailsForm.value['studentGender'];
+        this.UpdatedStudentDetails.studentD0B = this.studentDetailsForm.value['studentD0B'];
+        this.UpdatedStudentDetails.studentParent = this.studentDetailsForm.value['studentParent'];
 
-      if ( this.studentDetailsForm.value['studentPassword'] == this.studentDetailsForm.value['studentPasswordConfirm']){
-        this.UpdatedStudentDetails.studentPassword = this.studentDetailsForm.value['studentPassword'];
+        if (this.studentDetailsForm.value['studentPassword'] == this.studentDetailsForm.value['studentPasswordConfirm']) {
+          this.UpdatedStudentDetails.studentPassword = this.studentDetailsForm.value['studentPassword'];
 
-        console.log(this.UpdatedStudentDetails);
+          console.log(this.UpdatedStudentDetails);
 
-        this._commonService.signUpNewUser(this.UpdatedStudentDetails).subscribe(res =>{
-          this._commonService.snackBarShow("Details Updated Successfully!");
-          this.dialogRef.close('true');
-        }, error => {
-          this._commonService.snackBarShow("DB Error While updating!");
-          this.dialogRef.close('true');
-        })
-      }else {
-        this._commonService.snackBarShow("Passwords are not matching!");
+          this._commonService.signUpNewUser(this.UpdatedStudentDetails).subscribe(res => {
+            this._commonService.snackBarShow("Details Updated Successfully!");
+            this.dialogRef.close('true');
+          }, error => {
+            this._commonService.snackBarShow("DB Error While updating!");
+            this.dialogRef.close('true');
+          })
+        } else {
+          this._commonService.snackBarShow("Passwords are not matching!");
+        }
+      } else {
+        this._commonService.snackBarShow("Student ID Must Contain the Special Letters 'ST'");
       }
-
-    }else {
+    } else {
       this._commonService.snackBarShow("Please Check Your Form");
     }
 
