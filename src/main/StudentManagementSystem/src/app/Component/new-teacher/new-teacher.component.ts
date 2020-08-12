@@ -22,6 +22,7 @@ export class NewTeacherComponent implements OnInit {
 
   signUpForm:FormGroup;
   teacher:Teacher;
+  roleType:string = '';
 
   constructor(private  _commonService:CommonService,
               private dialogRef : MatDialogRef<NewTeacherComponent>) { }
@@ -43,17 +44,23 @@ export class NewTeacherComponent implements OnInit {
   signUpTeacher() {
 
     if (this.signUpForm.valid){
-      if (this.signUpForm.controls['teacherPassword'].value == this.signUpForm.controls['teacherPasswordConfirm'].value){
-        this.teacher = this.signUpForm.value;
-        this._commonService.newTeacher(this.teacher).subscribe( res =>{
-          this._commonService.snackBarShow("Teacher added successfully!");
-          this.dialogRef.close("true");
-        }, error => {
-          this.dialogRef.close("true");
-        });
+      this.roleType = this.signUpForm.controls['teacherID'].value;
+      this.roleType = this.roleType.substring(0,2);
+      if (this.roleType === 'TE'){
+        if (this.signUpForm.controls['teacherPassword'].value == this.signUpForm.controls['teacherPasswordConfirm'].value){
+          this.teacher = this.signUpForm.value;
+          this._commonService.newTeacher(this.teacher).subscribe( res =>{
+            this._commonService.snackBarShow("Teacher added successfully!");
+            this.dialogRef.close("true");
+          }, error => {
+            this.dialogRef.close("true");
+          });
 
+        }else {
+          this._commonService.snackBarShow("Passwords are not matching!");
+        }
       }else {
-        this._commonService.snackBarShow("Passwords are not matching!");
+        this._commonService.snackBarShow("Teacher ID Must Contain the Special Letters 'TE'");
       }
     }else {
       this._commonService.snackBarShow("Please Check Your Form");

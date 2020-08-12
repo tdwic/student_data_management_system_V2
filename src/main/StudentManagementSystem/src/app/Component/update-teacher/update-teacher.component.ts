@@ -23,6 +23,8 @@ export class UpdateTeacherComponent implements OnInit {
   updateForm: FormGroup;
   teacher:Teacher;
 
+  roleType:string = '';
+
 
   constructor(@Inject(MAT_DIALOG_DATA) public data:any ,
               private  _commonService:CommonService,
@@ -48,17 +50,23 @@ export class UpdateTeacherComponent implements OnInit {
   updateTeacherDetails() {
 
     if (this.updateForm.valid){
-      if (this.updateForm.controls['teacherPassword'].value == this.updateForm.controls['teacherPasswordConfirm'].value){
-        this.teacher = this.updateForm.value;
-        this._commonService.updateTeacher(this.teacher).subscribe( res =>{
-          this._commonService.snackBarShow("Teacher updated successfully!");
-          this.dialogRef.close("true");
-        }, error => {
-          this.dialogRef.close("true");
-        });
+      this.roleType = this.updateForm.controls['teacherID'].value;
+      this.roleType = this.roleType.substring(0,2);
+      if (this.roleType === 'TE'){
+        if (this.updateForm.controls['teacherPassword'].value == this.updateForm.controls['teacherPasswordConfirm'].value){
+          this.teacher = this.updateForm.value;
+          this._commonService.updateTeacher(this.teacher).subscribe( res =>{
+            this._commonService.snackBarShow("Teacher updated successfully!");
+            this.dialogRef.close("true");
+          }, error => {
+            this.dialogRef.close("true");
+          });
 
+        }else {
+          this._commonService.snackBarShow("Passwords are not matching!");
+        }
       }else {
-        this._commonService.snackBarShow("Passwords are not matching!");
+        this._commonService.snackBarShow("Teacher ID Must Contain the Special Letters 'TE'");
       }
     }else {
       this._commonService.snackBarShow("Please Check Your Form");

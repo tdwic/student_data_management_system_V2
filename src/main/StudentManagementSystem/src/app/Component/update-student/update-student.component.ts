@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CommonService} from "../../Services/CommonService/common.service";
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 class Student {
   studentTokenID:string = '';
@@ -30,7 +30,8 @@ export class UpdateStudentComponent implements OnInit {
   studentDetailsForm:FormGroup;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data:any ,
-              private  _commonService:CommonService) {
+              private  _commonService:CommonService,
+              private dialogRef : MatDialogRef<UpdateStudentComponent>) {
     this.studentDetails = data.studentData;
     this.UpdatedStudentDetails = data.studentData;
   }
@@ -79,13 +80,17 @@ export class UpdateStudentComponent implements OnInit {
 
         this._commonService.signUpNewUser(this.UpdatedStudentDetails).subscribe(res =>{
           this._commonService.snackBarShow("Details Updated Successfully!");
+          this.dialogRef.close('true');
         }, error => {
           this._commonService.snackBarShow("DB Error While updating!");
+          this.dialogRef.close('true');
         })
       }else {
-        this._commonService.snackBarShow("Password Not Matching! Check your password");
+        this._commonService.snackBarShow("Passwords are not matching!");
       }
 
+    }else {
+      this._commonService.snackBarShow("Please Check Your Form");
     }
 
   }
