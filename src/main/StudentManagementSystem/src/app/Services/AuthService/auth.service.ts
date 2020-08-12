@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Router} from "@angular/router";
 import {CommonService} from "../CommonService/common.service";
+import {AppComponent} from "../../app.component";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,8 @@ export class AuthService {
   adminRoleEncryptCodeNumber:string = '<<#$12"3"45$#-12%123>>';
   studentRoleEncryptCodeNumber:string = '<<FF#$123ER32??@#DDW>>';
   teacherRoleEncryptCodeNumber:string = '<<3@32$23A@#45GR12SS>>';
+
+
 
 
   constructor(private _router: Router,
@@ -63,6 +66,7 @@ export class AuthService {
           localStorage.setItem('name',Student.studentName.split(' ')[0]);
           if (this._commonService.tempLocation.length == 0){
             this._router.navigate(['home']);
+            localStorage.setItem('component','Dashboard');
           }else {
             this._router.navigate([this._commonService.tempLocation.pop()]);
           }
@@ -92,6 +96,7 @@ export class AuthService {
           localStorage.setItem('role',this.loggedUserRoleType);
           if (this._commonService.tempLocation.length == 0){
             this._router.navigate(['home']);
+            localStorage.setItem('component','Dashboard');
           }else {
             this._router.navigate([this._commonService.tempLocation.pop()]);
           }
@@ -128,6 +133,7 @@ export class AuthService {
           localStorage.setItem('name',Teacher.teacherName.split(' ')[0]);
           if (this._commonService.tempLocation.length == 0){
             this._router.navigate(['home']);
+            localStorage.setItem('component','Dashboard');
           }else {
             this._router.navigate([this._commonService.tempLocation.pop()]);
           }
@@ -151,7 +157,7 @@ export class AuthService {
       this._commonService.tempLocation = [];
     }
 
-    this._router.navigate(['home']);
+    this._router.navigate(['mainHome']);
   }
 
   localStorageClearing(){

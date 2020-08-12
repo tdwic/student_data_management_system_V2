@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-contact-page',
@@ -9,7 +10,10 @@ export class ContactPageComponent implements OnInit {
 
   constructor() { }
 
+
+
   ngOnInit(): void {
   }
+
 
 }

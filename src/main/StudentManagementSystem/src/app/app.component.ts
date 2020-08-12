@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnChanges} from '@angular/core';
 import {AuthService} from "./Services/AuthService/auth.service";
 import {CommonService} from "./Services/CommonService/common.service";
 import {interval} from "rxjs";
@@ -45,12 +45,15 @@ export class AppComponent {
   uName:string='user'
   uGender:string='none'
 
+
   componentName:string='Dashboard';
+  notificationCount: any;
 
   constructor(private _authService:AuthService,
               private  _commonService:CommonService,
               private _matDialog:MatDialog) {
     this.uName = localStorage.getItem('name');
+    this.notificationCount = this._commonService.getNotificationNumber();
   }
 
 
@@ -93,12 +96,11 @@ export class AppComponent {
 
   clicked(routeName:string){
     this._commonService.tempLocation.push(routeName);
-
   }
 
   componentNameUpdate(componentName:string){
-    //this._commonService.setCurrentInComponentName(componentName);
-    this.componentName = componentName;
+    this._commonService.setCurrentInComponentName(componentName);
+    this.componentName = this._commonService.getCurrentComponentName();
   }
 
   userName(){

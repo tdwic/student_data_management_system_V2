@@ -136,10 +136,11 @@ export class CommonService {
   //Current component name setters and getters
   public setCurrentInComponentName(name){
     this.currentInComponentName = name;
+    localStorage.setItem('component',name);
   }
 
   public getCurrentComponentName(){
-    return this.currentInComponentName;
+    return localStorage.getItem('component');;
   }
   //Current component name setters and getters
 
