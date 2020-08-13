@@ -5,6 +5,11 @@
   overflow-y: auto;
 }
 
+/*.table-data-container th {*/
+/*  font-size: 17px;*/
+/*}*/
+
+
 .newStudentButton{
   margin-bottom: 10px;
   font-size: 20px;
