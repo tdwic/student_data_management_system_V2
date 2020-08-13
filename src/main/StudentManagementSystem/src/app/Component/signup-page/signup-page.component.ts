@@ -69,7 +69,7 @@ export class SignupPageComponent implements OnInit {
           Student.studentPhone = this.signUpForm.value['studentPhone'];
           Student.studentParent = this.signUpForm.value['studentParent'];
 
-          console.log(Student);
+          // console.log(Student);
 
           this._commonService.signUpNewUser(Student).subscribe(res =>{
             this._commonService.snackBarShow("Student added successfully!");

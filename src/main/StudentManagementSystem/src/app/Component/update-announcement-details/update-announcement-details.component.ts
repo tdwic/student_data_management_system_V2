@@ -48,7 +48,7 @@ export class UpdateAnnouncementDetailsComponent implements OnInit {
     this.announcementDetails.announcementLink = this.updateAnnouncement.value['announcementLink'];
     this.announcementDetails.announcementTarget = this.updateAnnouncement.value['announcementTarget'];
 
-    console.log(this.updateAnnouncement.value['announcementID'])
+    // console.log(this.updateAnnouncement.value['announcementID'])
 
     this._commonService.updateAnnouncement(this.announcementDetails).subscribe( res => {
       this._commonService.snackBarShow("Announcement Updated Successfully!");

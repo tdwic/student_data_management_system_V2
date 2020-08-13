@@ -32,14 +32,14 @@ export class MainLoginComponent implements OnInit {
   }
 
   loginUser(){
-    console.log("clicked");
+    // console.log("clicked");
     const userName = this.loginForm.get('userId').value;
     const passWord = this.loginForm.get('password').value;
 
     this.userType = userName.substring(0,2);
 
-    console.log(userName);
-    console.log(this.userType);
+    // console.log(userName);
+    // console.log(this.userType);
 
     if (this.userType == this.userRoleAnnotationForStudent){
       //alert("Login User Role "+this.userType+" Student");

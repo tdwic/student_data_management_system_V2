@@ -85,7 +85,7 @@ export class AuthService {
 
       this._commonService.authenticateAdminByAdminID(userID).subscribe(res=>{
         Admin = res;
-        console.log(Admin);
+        // console.log(Admin);
 
         if (userID == Admin.adminID && passWord == Admin.password){
           this._commonService.snackBarShow("Login Success ! Welcome ");

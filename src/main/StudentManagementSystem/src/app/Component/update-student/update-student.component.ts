@@ -78,7 +78,7 @@ export class UpdateStudentComponent implements OnInit {
         if (this.studentDetailsForm.value['studentPassword'] == this.studentDetailsForm.value['studentPasswordConfirm']) {
           this.UpdatedStudentDetails.studentPassword = this.studentDetailsForm.value['studentPassword'];
 
-          console.log(this.UpdatedStudentDetails);
+          // console.log(this.UpdatedStudentDetails);
 
           this._commonService.signUpNewUser(this.UpdatedStudentDetails).subscribe(res => {
             this._commonService.snackBarShow("Details Updated Successfully!");

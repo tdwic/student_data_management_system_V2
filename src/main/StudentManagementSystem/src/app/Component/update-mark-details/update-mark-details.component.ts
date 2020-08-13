@@ -49,7 +49,7 @@ export class UpdateMarkDetailsComponent implements OnInit {
     this.studentMarks = data.marksDetails;
     this.studentMarksUpdated = data.marksDetails;
 
-    console.log(this.studentMarksUpdated);
+    // console.log(this.studentMarksUpdated);
 
   }
 
