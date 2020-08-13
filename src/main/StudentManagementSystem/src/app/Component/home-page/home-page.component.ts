@@ -20,16 +20,27 @@ export class HomePageComponent implements OnInit {
 
   newAnnouncemnt:Announcement[];
 
+  roleTypeAdmin:string = '<<#$12"3"45$#-12%123>>';
+  roleTypeTeacher:string = '<<3@32$23A@#45GR12SS>>';
+
+  loggedUserType:string;
+
   ngOnInit(): void {
-
+    this.loggedUserType = localStorage.getItem('role');
     this.fetchNoticeDetails();
-
   }
 
   fetchNoticeDetails(){
     this._commonService.getAllAnnouncements().subscribe(res => {
       this.newAnnouncemnt = res;
-      this._commonService.setNotificationNumber(this.newAnnouncemnt.length);
+
+      if (this.loggedUserType === this.roleTypeAdmin || this.loggedUserType === this.roleTypeTeacher ){
+        this.newAnnouncemnt = this.newAnnouncemnt.filter( function (announcement){
+          return announcement.announcementTarget === "all";
+        });
+      }
+
+      //this._commonService.setNotificationNumber(this.newAnnouncemnt.length);
     },error => {
       this._commonService.snackBarShow("Error while loading data");
     });
